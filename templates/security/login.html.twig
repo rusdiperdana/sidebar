@@ -1,0 +1,43 @@
+{% block title %}Log in!
+    <link rel="stylesheet" href="https://bootswatch.com/4/cerulean/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+{% endblock %}
+
+{% block body %}
+    <center>
+        <form method="post">
+            {% if error %}
+                {% if(error.messageKey == "Invalid credentials.") %}
+                    <div class="alert alert-danger">
+                        {{ "Username or Password False" }}
+                    </div>
+                {% else %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+            {% endif %}
+
+            <div class="container login-container m-r-7">
+
+                <div class="col-md-6 login-form-1">
+                    <h3>LOGIN</h3>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" value="{{ last_username }}" name="email" id="email" autocomplete="off" placeholder="email *" required autofocus/>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Password *" value="" name="password" id="inputPassword" required/>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btnSubmit" value="Login" />
+                        </div>
+
+                        <input type="hidden" name="_csrf_token"
+                               value="{{ csrf_token('authenticate') }}">
+                    </form>
+                </div>
+            </div>
+        </form>
+    </center>
+{% endblock %}
