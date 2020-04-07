@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+{% endblock %}
+{% block body %}
+    <div class="container">
+        {{ form_start(form) }}
+        <div class="mt-5 border mb-4 pt-4 pb-4 pl-5">
+            <div class="form-group row">
+                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"><b>NoSurat RT</b></label>
+                <div class="col-sm-10">
+                    {{ form_row(form.noSuratRt) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"><b>NoSurat Rw</b></label>
+                <div class="col-sm-10">
+                    {{ form_row(form.noSuratRw) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"><b>No Keterangan</b></label>
+                <div class="col-sm-10">
+                    {{ form_row(form.noSuratKeterangan) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"><b>Keterangan</b></label>
+                <div class="col-sm-10">
+                    {{ form_row(form.keterangan) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"><b>Pemohon Surat</b></label>
+                <div class="col-sm-10">
+                    {{ form_row(form.pemohonSurat) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"><b>No Pengajuan</b></label>
+                <div class="col-sm-10">
+                    {{ form_row(form.noPengajuan) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"><b>Tipe Surat Keterangan</b></label>
+                <div class="col-sm-10">
+                    {{ form_row(form.Tipe) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"><b>Body Surat</b></label>
+                <div class="col-sm-10">
+                    {{ form_row(form.bodySurat) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"><b>Komentar</b></label>
+                <div class="col-sm-10">
+                    {{ form_row(form.komentar) }}
+                </div>
+            </div>
+            <div class="form-group row">
+                {{ form_row(form.approveSK) }}
+                {{ form_row(form.rejectSK) }}
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+    <script  src="{{ asset('/assets/plugins/tinymce/tinymce.min.js') }}"></script>
+    <script src="{{ asset('/assets/plugins/tinymce/init-tinymce.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SuratKeteranganController!{% endblock %}
+
+{% block body %}
+   <table class="table table-hover">
+      <thead>
+      <tr>
+         <th>Keterangan</th>
+         <th>Nama Pemohon Surat</th>
+         <th>Jenis Surat Pemohon</th>
+         <th>Detail</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for data in datas %}
+         <tr>
+            <td >{{ data.refid.keterangan('d-m-Y H:i:s') }}</td>
+            <td>{{ data.refid.pemohonSurat.namaPenduduk }}</td>
+               {% if (data.refid.tipe == 1)%}
+                 <td>Surat Keterangan Tidak Mampu (SKTM)</td>
+               {% endif %}
+               {% if (data.refid.tipe == 2) %}
+                  <td>Surat Keterangan Usaha(SKU)</td>
+               {% endif %}
+               {% if(data.refid.tipe == 3) %}
+                  <td>Surat Penghantar Keramaian</td>
+               {% endif %}
+               {% if(data.refid.tipe == 4) %}
+                  <td>Surat Keterangan Cerai Hidup / Mati</td>
+               {% endif %}
+               {% if(data.refid.tipe == 5) %}
+                  <td>Surat Keterangan Keterangan Domisili</td>
+               {% endif %}
+               {% if(data.refid.tipe == 6) %}
+                  <td>Surat Keterangan Kematian</td>
+               {% endif %}
+               {% if(data.refid.tipe == 7) %}
+                  <td>Surat Keterangan pindah(Keluar/Datang)</td>
+               {% endif %}
+            <td>
+               <a href="{{ path('detailSk',{'id':data.refid.id}) }}">detail</a>
+            </td>
+         </tr>
+      {% endfor %}
+      </tbody>
+   </table>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello OnProgressController!{% endblock %}
+
+{% block body %}
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>tanggal</th>
+            <th>Keterangan</th>
+            <th>pengirim</th>
+            <th>Detail</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for data in datas %}
+                <tr>
+                    <td >{{ data.refid.tglBuat|date('d-m-Y H:i:s') }}</td>
+                    <td>{{ data.refid.bodySurat }}</td>
+                    <td>{{ data.refid.pengirimNamaText }}</td>
+                    <td>
+                        <a href="{{ path('detail',{'id':data.refid.id}) }}">Edit</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+    {% block body %}
+        <div class="container">
+            <div class="modal-header mb-3">
+                <h3>Tambah Pegawai</h3>
+            </div>
+            {{ form_start(form) }}
+            <div class="mt-5 border mb-4 pt-4 pb-4 pl-5">
+                <div class="form-group row">
+                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"><b>Email</b></label>
+                    <div class="col-sm-10">
+                        {{ form_row(form.email) }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"><b>Role</b></label>
+                    <div class="col-sm-10">
+                        {{ form_row(form.role) }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"><b>Phone</b></label>
+                    <div class="col-sm-10">
+                        {{ form_row(form.phone) }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"><b>Status Pegawai</b></label>
+                    <div class="col-sm-10">
+                        {{ form_row(form.statusPegawai) }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"><b>Ussername</b></label>
+                    <div class="col-sm-10">
+                        {{ form_row(form.ussername) }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"><b>Jabatan</b></label>
+                    <div class="col-sm-10">
+                        {{ form_row(form.IdJobPosition) }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"><b>Nama Pegawai</b></label>
+                    <div class="col-sm-10">
+                        {{ form_row(form.namaPegawai) }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm"><b>Token</b></label>
+                    <div class="col-sm-10">
+                        {{ form_row(form.token) }}
+                    </div>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    {% endblock %}

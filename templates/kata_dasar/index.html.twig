@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello KataDasarController!{% endblock %}
+
+{% block body %}
+    <table class="table table-hover">
+        <a href="{{ path('tambahKata') }}" type="button" class="btn btn-outline-info mb-3 float-left"style="margin-top: 10px">Tambah</a>
+        <thead>
+        </tr>
+        <th scope="col">No</th>
+        <th scope="col">Kata Dasar</th>
+        <th scope="col">Keterangan</th>
+        <th scope="col">Status Kata</th>
+        <th scope="col">Aksi</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% set no = 0 %}
+        {% for datas in data %}
+            <tr class="table-active">
+                <td>
+                    {% set no = no + 1 %}
+                    {{ no }}
+                </td>
+                <td>{{ datas.kataDasar }}</td>
+                <td>{{ datas.keterangan }}</td>
+                <td>{{ datas.statusKata }}</td>
+                <td>
+                    <a href="#">Edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

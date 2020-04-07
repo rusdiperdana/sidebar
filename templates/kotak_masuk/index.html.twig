@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello KotakMasukController!{% endblock %}
+
+{% block body %}
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>tanggal</th>
+                <th>Keterangan</th>
+                <th>pengirim</th>
+                <th>Detail</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for data in datas %}
+                {% if data.readerStatus ==0 %}
+                <tr>
+                    <td style="font-weight: bold">{{ data.refid.tglBuat|date('d-m-Y H:i:s') }}</td>
+                    <td style="font-weight: bold">{{ data.refid.bodySurat }}</td>
+                    <td style="font-weight: bold">{{ data.refid.pengirimNamaText }}</td>
+                    <td>
+                        <a href="#">Edit</a>
+                    </td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+{% endblock %}

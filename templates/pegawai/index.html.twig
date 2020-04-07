@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <table class="table table-hover">
+        <a href="{{ path('tambah_pegawai') }}" type="button" class="btn btn-outline-info mb-3 float-left"style="margin-top: 10px">Tambah</a>
+        <thead>
+            </tr>
+            <th scope="col">No</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Status</th>
+            <th scope="col">Ussername</th>
+            <th scope="col">Nama</th>
+            <th scope="col">Token</th>
+            <th scope="col">Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for datas in data %}
+            <tr class="table-active">
+                <td>{{ datas.id }}</td>
+                <td>{{ datas.email }}</td>
+                <td>{{ datas.role }}</td>
+                <td>{{ datas.phone }}</td>
+                <td>{{ datas.statusPegawai }}</td>
+                <td>{{ datas.ussername }}</td>
+                <td>{{ datas.namaPegawai }}</td>
+                <td>{{ datas.token }}</td>
+                <td>
+                    <a href="{{ path('edit_pegawai',{'id':datas.id}) }}">Edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

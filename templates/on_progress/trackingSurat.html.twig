@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello OnProgressController!{% endblock %}
+
+{% block body %}
+   <table class="table table-hover">
+      <thead>
+         <tr>
+            <th>Tanggal</th>
+            <th>Keterangan</th>
+            <th>Step</th>
+            <th>Pemeriksa</th>
+         </tr>
+      </thead>
+      <tbody>
+      {% for ads in ab %}
+            <td>{{ ads.tglBuat|date('Y-m-d H:i:s')}}</td>
+            <td>{{ ads.keterangan }}</td>
+            <td>{{ ads.step }}</td>
+            <td>{{ ads.pemeriksadaftar }}</td>
+         </tr>
+      {% endfor %}
+      </tbody>
+   </table>
+{% endblock %}

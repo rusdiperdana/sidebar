@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <table class="table table-hover">
+        <thead>
+            </tr>
+            <th scope="col">No</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Status</th>
+            <th scope="col">Ussername</th>
+            <th scope="col">Nama</th>
+            <th scope="col">Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% set no = 0 %}
+        {% for datas in data %}
+            <tr class="table-active">
+                <td>
+                    {% set no = no + 1 %}
+                    {{ no }}
+                </td>
+                <td>{{ datas.email }}</td>
+                <td>{{ datas.role }}</td>
+                <td>{{ datas.phone }}</td>
+                <td>{{ datas.statusPegawai }}</td>
+                <td>{{ datas.ussername }}</td>
+                <td>{{ datas.namaPegawai }}</td>
+                <td>
+                <td>
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="margin-left: -100px">
+                            Detail
+                    </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="{{ path('detailRT',{'id':datas.id}) }}">Detail Signatur</a>
+                        </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
