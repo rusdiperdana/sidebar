@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Service\suratService;
+use App\Service\userInfo;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,5 +39,15 @@ class TestController extends AbstractController
     public function index()
     {
         return $this->render('test/index.html.twig');
+    }
+
+    /**
+     * @Route("/indexNama", name="indexNama",methods={"GET","POST"})
+     */
+    public function dapetinNama(suratService $service,userInfo $userInfo)
+    {
+        $idUser = $this->getUser()->getId();
+        $jabatan = $userInfo->getJabatan($idUser)->getNamaPegawai();
+        return $this->render('on_progress/index.html.twig',['jabatan'=>$jabatan]);
     }
 }

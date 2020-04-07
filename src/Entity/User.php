@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -23,11 +24,6 @@ class User implements UserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="json")
-     */
-    private $roles = [];
-
-    /**
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
@@ -37,6 +33,38 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $Role;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $Phone;
+
+    /**
+     * @ORM\Column(type="integer" , options={"default"="1","comment"="1=aktif; 0=tidak aktif; 2=proses"})
+     */
+    private $statusPegawai;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Ussername;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\CommondJobPosition")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $IdJobPosition;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $namaPegawai;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $token;
+
 
     public function getId(): ?int
     {
@@ -66,25 +94,13 @@ class User implements UserInterface
     }
 
     /**
-     * @see UserInterface
+     * @inheritDoc
      */
     public function getRoles():array
     {
         return[
             'ROLE_USER', $this->getRole()
         ];
-
-        /*$roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-        return array_unique($roles);*/
-    }
-
-    public function setRoles(array $roles): self
-    {
-        $this->roles = $roles;
-
-        return $this;
     }
 
     /**
@@ -127,6 +143,78 @@ class User implements UserInterface
     public function setRole(string $Role): self
     {
         $this->Role = $Role;
+
+        return $this;
+    }
+
+    public function getPhone(): ?int
+    {
+        return $this->Phone;
+    }
+
+    public function setPhone(int $Phone): self
+    {
+        $this->Phone = $Phone;
+
+        return $this;
+    }
+
+    public function getStatusPegawai(): ?int
+    {
+        return $this->statusPegawai;
+    }
+
+    public function setStatusPegawai(int $statusPegawai): self
+    {
+        $this->statusPegawai = $statusPegawai;
+
+        return $this;
+    }
+
+    public function getUssername(): ?string
+    {
+        return $this->Ussername;
+    }
+
+    public function setUssername(string $Ussername): self
+    {
+        $this->Ussername = $Ussername;
+
+        return $this;
+    }
+
+    public function getIdJobPosition(): ?CommondJobPosition
+    {
+        return $this->IdJobPosition;
+    }
+
+    public function setIdJobPosition(?CommondJobPosition $IdJobPosition): self
+    {
+        $this->IdJobPosition = $IdJobPosition;
+
+        return $this;
+    }
+
+    public function getNamaPegawai(): ?string
+    {
+        return $this->namaPegawai;
+    }
+
+    public function setNamaPegawai(string $namaPegawai): self
+    {
+        $this->namaPegawai = $namaPegawai;
+
+        return $this;
+    }
+
+    public function getToken(): ?string
+    {
+        return $this->token;
+    }
+
+    public function setToken(?string $token): self
+    {
+        $this->token = $token;
 
         return $this;
     }
